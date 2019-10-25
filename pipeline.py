@@ -2,11 +2,10 @@ from sqlalchemy.orm import sessionmaker
 from models import Corals, db_connect, create_corals_table
 
 
-class Pipeline(object):
+class CoralPipeline(object):
 
     def __init__(self):
         engine = db_connect()
-        print(engine)
         create_corals_table(engine)
         self.Session = sessionmaker(bind=engine)
 
@@ -18,11 +17,11 @@ class Pipeline(object):
         try:
             session.add(coral)
             session.commit()
-        except:
+            print('{} added'.format(coral.name))
+        except Exception as e:
             session.rollback()
-            raise
+            # raise e
         finally:
             session.close()
 
-        print(item)
         return item

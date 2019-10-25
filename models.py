@@ -32,4 +32,5 @@ class Corals(DeclarativeBase):
     flow = Column('flow', String, nullable=True)
     lighting = Column('lighting', String, nullable=True)
     image = Column('image', String, nullable=True)
+    url = Column('url', String, unique=True)
 

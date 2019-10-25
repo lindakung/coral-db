@@ -29,5 +29,4 @@ def log_error(e):
 def split_string(str):
     count = str.find(':')
     value = str[count + 1:].strip()
-    print(value)
     return value
